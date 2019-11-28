@@ -1,0 +1,25 @@
+.form-page{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-container{
+    width: 360px;
+    background-color: rgb(193, 226, 143);
+    padding: 20px;
+
+}
+
+.form-item{
+    width: 100%;
+    display: flex;
+
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.form-item-title{
+
+}

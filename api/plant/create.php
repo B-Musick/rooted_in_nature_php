@@ -1,11 +1,15 @@
 <?php include "../../views/partials/header.html" ?>
-    <form action="create.php" method="POST">
-        Genus: <input type="text" name="genus"><br>
-        Species: <input type="text" name="species"><br>
-        Family: <input type="text" name="family"><br>
-        Image: <input type="text" name="leaf_type"><br>
-        <input type="submit" name="submit">
-    </form>
+  <div class="form-page">
+    <div class="form-container">
+      <form action="create.php" method="POST">
+          <div class="form-item"><span class="form-item-title">Genus:</span> <span><input type="text" name="genus"><br></span></div>
+          <div class="form-item"><span class="form-item-title">Species:</span>  <span><input type="text" name="species"><br></span></div>
+          <div class="form-item"><span class="form-item-title">Family:</span>  <span><input type="text" name="family"><br></span></div>
+          <div class="form-item"><span class="form-item-title">Image:</span>  <span><input type="text" name="leaf_type"><br></span></div>
+          <input type="submit" name="submit">
+      </form>
+    </div>
+  </div>
 <?php 
   // Headers
   header('Access-Control-Allow-Origin: *');

@@ -9,20 +9,53 @@
 
     <!------------------------------- HEADER/FOOTER --------------------------->
     <link rel="stylesheet" href="/public/stylesheets/header.css">
-    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="/public/stylesheets/footer.css">
+    <link rel="stylesheet" href="/public/stylesheets/dropdown.css">
+    <link rel="stylesheet" href="/public/stylesheets/landing.css">
+
+
+    <!-- PLANTS -->
+    <link rel="stylesheet" href="/public/stylesheets/plants/form.css">
+
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.12.0/d3.min.js"></script>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet"> 
     
 
 </head>
 
 <body>
-
-
+    <div class="page-header">(RootedInNature)<sup>2</sup></div>
+    <svg width= "100vw" height="260px" id="navbar-svg">
+            
+    </svg>
     <nav class="navbar">
 
+        
         <div class="navbar-links">
-            <a href="/views/landing.php"><div class="navbar-item">(RootedInNature)<sup>2</sup></div></a>
-            <a href="/views/blogs/index.php"><div class="navbar-item">Blogs</div></a>
-            <a href="/api/plant/index.php"><div class="navbar-item">Plants</div></a>
+            <div class='navbar-item-container'><a href="/views/landing.php"><div class="navbar-item">Home</div></a></div>
+            <div class='navbar-item-container'><a href="/views/blogs/index.php"><div class="navbar-item">Blogs</div></a></div>
+            <div class='navbar-item-container'>
+                <a>
+                    <div class="navbar-item" id="navbar-plants">
+                        Plants
+                    </div>
+                </a>
+                <div id="plant-dropdown" class="plant-dropdown-hidden">
+                        <a href="/api/plant/create.php"><div class="p-item plant-dropdown-item-hidden">CREATE</div></a>
+                    <a><div class="p-item plant-dropdown-item-hidden">SEARCH</div></a>
+                    <a><div class="p-item plant-dropdown-item-hidden">TABLE VIEW</div></a>
+                    <a><div class="p-item plant-dropdown-item-hidden">IMAGE VIEW</div></a>
+
+
+
+
+                </div>
+            </div>
+
+
         </div>
 
         <!-- <div class=" "> -->
@@ -35,10 +68,8 @@
             <%}%>
             </div> -->
 
-        
-    
-
     </nav>
+
 
     
 

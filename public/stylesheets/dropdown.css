@@ -1,0 +1,26 @@
+#plant-dropdown{
+    position: absolute;
+    height: 300px;
+    display: block;
+    transition-property: height, font-size, display;
+    transition-duration: 1s;
+}
+
+.plant-dropdown-item{
+    
+    background-color: rgb(133, 169, 245);
+    border: solid 1px rgb(25, 98, 255);
+    padding: 5px;
+}
+.plant-dropdown-item a{
+    height: 100%;
+}
+.plant-dropdown-hidden{
+    height: 0px;
+    font-size: 0px !important;
+    display: none;
+    transition-property: height, font-size,display;
+    transition-duration: 1s;
+   
+}
+
