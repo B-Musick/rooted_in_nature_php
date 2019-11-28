@@ -137,5 +137,26 @@
             printf("Error: %s.\n", $stmt->error);
             return false;
         }
+
+        public function delete(){
+            $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+            // Prepare statement for connection
+            $stmt = $this->conn->prepare($query);
+
+            // Clean Data
+            $this->id = htmlspecialchars(strip_tags($this->id));
+
+            // Bind data
+            $stmt->bindParam(':id', $this->id);
+
+            // Execute query. dont need to return value since inserting value
+            if($stmt->execute()) {
+                return true;
+            }
+
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            return false;
+        }
             
     }

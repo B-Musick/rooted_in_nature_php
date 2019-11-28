@@ -28,7 +28,9 @@
   
   }
 
-  if($plant->create() && $plant->genus!=null) {
+  if(isset($_POST['submit']) && $plant->create() ) {
+    // Make sure POST is submitted before creating
+    // Had problem where it was creating empty post when first going to create page
       echo 'Post Created';
       echo 'Plant genus: ' . $plant->genus;
 
