@@ -46,7 +46,8 @@
         }
 
         public function show(){
-            $query = 'SELECT * FROM ' . $this->table . ' p WHERE p.id = ? LIMIT 0,1';
+            $query = 'SELECT * FROM ' . $this->table . 
+            ' p WHERE p.id = ? LIMIT 0,1';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -97,11 +98,44 @@
             $stmt->bindParam(':leaf_type', $this->leaf_type);
             // Execute query. dont need to return value since inserting value
             if($stmt->execute()) {
-            return true;
+                return true;
+            }
         }
-        // Print error if something goes wrong
-        printf("Error: %s.\n", $stmt->error);
-        return false;
-    }
-          
+ 
+
+        public function update(){
+            // Will use id to choose which to update
+            // Create query
+            $query = 'UPDATE ' . $this->table . ' SET genus = :genus, species = :species, 
+                            family = :family, leaf_type = :leaf_type 
+                            WHERE id = :id';
+            // Prepare statement for connection
+            $stmt = $this->conn->prepare($query);
+            // Clean data
+            // Dont want any html characters
+            // Also dont want any tages
+            // This is sanitizing the data for security
+            $this->genus = htmlspecialchars(strip_tags($this->genus));
+            $this->species = htmlspecialchars(strip_tags($this->species));
+            $this->family = htmlspecialchars(strip_tags($this->family));
+            $this->leaf_type = htmlspecialchars(strip_tags($this->leaf_type));
+            $this->id = htmlspecialchars(strip_tags($this->id));
+
+            // Bind data (using named parameters (:) instead of question marks)
+            $stmt->bindParam(':genus', $this->genus);
+            $stmt->bindParam(':species', $this->species);
+            $stmt->bindParam(':family', $this->family);
+            $stmt->bindParam(':leaf_type', $this->leaf_type);
+            $stmt->bindParam(':id', $this->id);
+
+
+            // Execute query. dont need to return value since inserting value
+            if($stmt->execute()) {
+                return true;
+            }
+            // Print error if something goes wrong
+            printf("Error: %s.\n", $stmt->error);
+            return false;
+        }
+            
     }

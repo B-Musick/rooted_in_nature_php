@@ -19,15 +19,6 @@
   $db = $database->connect();
   // Instantiate blog post object
   $plant = new Plant($db);
-  // Get raw posted data from POSTMAN
-//   $data = json_decode(file_get_contents("php://input"));
-
-//   // Set values in plant object to this new data
-//   $plant->genus = $data->genus;
-//   $plant->species = $data->species;
-//   $plant->family = $data->family;
-//   $plant->leaf_type = $data->leaf_type;
-  // Create plant using plant object method
 
   if(isset($_POST['submit'])){
     $plant->genus = $_POST['genus'];
@@ -36,14 +27,13 @@
     $plant->leaf_type = $_POST['leaf_type'];
   
   }
+
   if($plant->create() && $plant->genus!=null) {
-    
       echo 'Post Created';
       echo 'Plant genus: ' . $plant->genus;
 
   } else {
-    echo 'Post Not Created';
-    
+    echo 'Post Not Created'; 
   }
 ?>
 

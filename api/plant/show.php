@@ -1,7 +1,13 @@
+<?php include '../../views/partials/header.html' ?>
+<form action="show.php" type="GET">
+    <input type="text" name="id">
+    <input type="submit">
+</form>
+
 <?php
     // Headers
     header('Access-Control-Allow-Origin: *'); // Allow anyone to access
-    header('Content-Type: application/json');
+
     header('Access-Control-Allow-Methods: POST'); // Allowed requests
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods
     ,Content-Type, Authorization, X-Requested-With'); // Allowed headers (X-Requested-With = prevent XSS)
@@ -45,5 +51,13 @@
         'latitude' => $plant->latitude
     );
 
-    // Make JSON
-    print_r(json_encode($plant_arr));
+    
+    echo '<h1>' . $plant_arr['genus'] . ' ' . $plant_arr['species'] . '</h1>';
+    echo '<a href="http://localhost:8000/api/plant/update.php?id=' . $plant_arr['id'] . '">Update</a>'
+   
+
+    
+?>
+
+
+<?php include '../../views/partials/footer.html' ?>

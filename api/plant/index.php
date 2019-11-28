@@ -2,7 +2,6 @@
 // Get all the plants
      // Headers
      header('Access-Control-Allow-Origin: *'); // Allow anyone to access
-     header('Content-Type: application/json');
      header('Access-Control-Allow-Methods: POST'); // Allowed requests
      header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods
      ,Content-Type, Authorization, X-Requested-With'); // Allowed headers (X-Requested-With = prevent XSS)
@@ -51,8 +50,23 @@
              );
              array_push($plants_arr['data'], $plant_item);
             }
-                // Turn to JSON & output
-                echo json_encode($plants_arr);
+
+            echo '<table align="left" cellspacing="5" cellpadding="8">' .
+            '<tr><th align="left"><b>Plant Genus</b></th>' .
+            '<th align="left"><b>Plant Species</b></th>' .
+            '<th align="left"><b>Plant Family</b></th>' .
+            '<th align="left"><b>Plant ID</b></th>' .
+            '<th align="left"><b>Leaf Type</b></th></tr>';
+
+            foreach($plants_arr['data'] as $plant){
+                echo '<tr><td align="left">' . 
+                $plant['genus'] . '</td><td align=""left">' . 
+                $plant['species'] . '</td><td align="left">' .
+                $plant['family'] . '</td><td align="left"><a href="http://localhost:8000/api/plant/show.php?id=' . $plant['id'] . '">' .
+                $plant['id'] . '</a></td><td align="left">' .
+                $plant['leaf_type'] . '</td><td align="left">' ;
+            }
+            echo '</tr></a></table>';
 
         }else{
             // No Plants (num===0)
