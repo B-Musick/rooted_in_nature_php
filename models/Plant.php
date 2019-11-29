@@ -20,6 +20,9 @@
         public $city;
         public $longitude;
         public $latitude;
+
+        // For search query
+        public $searchQuery;
         
 
         // Constructor - runs automatically on instantiation
@@ -157,6 +160,24 @@
             // Print error if something goes wrong
             printf("Error: %s.\n", $stmt->error);
             return false;
+        }
+
+        public function search(){
+            $query = 'SELECT * FROM ' . $this->table . ' WHERE genus LIKE ?';
+
+            // Prepare statement for connection
+            $stmt = $this->conn->prepare($query);
+
+            // Clean Data
+            $this->searchQuery = htmlspecialchars(strip_tags($this->searchQuery));
+
+            
+
+            // Execute query. dont need to return value since inserting value
+            $stmt->execute([$this->searchQuery]);
+            return $stmt;
+            
+            
         }
             
     }
