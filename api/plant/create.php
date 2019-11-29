@@ -6,7 +6,7 @@
           <div class="form-item"><span class="form-item-title">Species:</span>  <span><input type="text" name="species"><br></span></div>
           <div class="form-item"><span class="form-item-title">Family:</span>  <span><input type="text" name="family"><br></span></div>
           <div class="form-item"><span class="form-item-title">Image:</span>  <span><input type="text" name="leaf_type"><br></span></div>
-          <input type="submit" name="submit">
+          <input class="form-item" type="submit" name="submit" id="submit-button">
       </form>
     </div>
   </div>
